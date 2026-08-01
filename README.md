@@ -1,66 +1,64 @@
-
 ![](images/excalidraw_shawshank_redemption.jpg)
 
 # StaticBoard
 
-Excalidraw is one of the best tools for creating diagrams and hand-drawn visuals. But, you can't use it online and paste sensitive data. Even running it offline requires complex installation and not all machine have that kind of priviledge. To solve this I was looking for a solution where there would be minimal setup and just one html file and everything can be run offline. No install no setup. Like:
+I wanted an Excalidraw-style whiteboard that I could use on machines where I could not install software or paste sensitive information into an online service.
 
-> Just download one file, open it, and start drawing.
+Running Excalidraw locally is possible, but it still requires some setup. I wanted something simpler: one HTML file that I could download, open in a browser, and use offline.
 
-That is the idea behind StaticBoard. While desinging it I removed all the complexitiies like user accounts, team collaboration, cloud storage, session management, or other enterprise features. Amd  by removing those featurs I was able to embeed all excali into a single htmkl file which can be just downloaded and run and it gives you almost all excali features.
+That became StaticBoard.
 
-
-## How to run it
+## Run it
 
 1. Download `index.html`.
 2. Open it in your browser.
 
-That is all.
+There is nothing to install and no server to start.
 
-There is no installer, server, login, database, or configuration.
+## Features
 
-## What it can and cannot do
+StaticBoard includes the drawing tools I use most often:
 
-StaticBoard includes the usual drawing tools such as shapes, arrows, text, freehand drawing, images, undo, redo, zoom, and export.
+- Shapes, arrows, text, and freehand drawing
+- Images and screenshots
+- Undo and redo
+- Zoom and canvas navigation
+- PNG and SVG export
+- Editable Excalidraw file support
+- Local saving in the browser
 
-It also adds a few features that are useful when working with screenshots:
+It also includes a few changes for working with screenshots:
 
-* Paste screenshots directly onto the board
-* Add a soft shadow to pasted images
-* Draw arrows from inside an image to the surrounding canvas
-* Save your work locally in the browser
-* Open and save editable Excalidraw files
-* Export drawings as PNG or SVG
+- Paste screenshots directly onto the board
+- Add a soft shadow to an image
+- Draw arrows from inside an image to the surrounding canvas
 
-StaticBoard intentionally leaves out:
+## What is not included
 
-* Accounts and sign-in
-* Real-time collaboration
-* Cloud storage
-* Team administration
-* Backend services
+StaticBoard does not have:
 
-Those features are useful in larger products, but they would defeat the purpose of keeping StaticBoard simple and portable.
+- User accounts
+- Real-time collaboration
+- Cloud storage
+- Team administration
+- Backend services
 
-## How is everything inside one file?
+The board is meant for local, individual use.
+
+## How it fits into one file
 
 StaticBoard is built with React and uses Excalidraw as its drawing engine.
 
-Normally, a web application contains separate JavaScript, CSS, font, and asset files. In this release, the application code and styling are bundled inside `index.html`, allowing the browser to run the app directly from that file. The uploaded build contains the application code and its custom image, saving, and export logic within the HTML bundle. 
+A normal web application keeps its JavaScript, CSS, and other files separately. In StaticBoard, the application code and styling are bundled into `index.html`, so the browser can run it directly from that file.
 
-Images are processed inside the browser, and the current board is saved locally. There is no StaticBoard server receiving your drawings.
-
+Images are processed in the browser, and the current board is saved locally. StaticBoard does not send your drawings to its own server.
 
 ## Credits
 
 StaticBoard uses the open-source Excalidraw editor as its drawing engine.
 
-The aim of this project is not to hide that connection. It is to make the drawing experience easier to distribute and use in places where installing or hosting a full application is inconvenient.
+The purpose of this project is to make that drawing experience easier to carry and use on machines where installing or hosting a full application is not practical.
 
 ## Project status
 
-StaticBoard is still being improved. Future versions may add more useful features, but the basic idea will remain the same:
-
-> One file. Open it and start drawing.
-
----
+StaticBoard is still being improved. The main idea will remain the same: download one file, open it, and start drawing.
