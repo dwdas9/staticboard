@@ -1,165 +1,66 @@
-# Sketchboard
 
-A local-first drawing and annotation app that runs entirely in your browser. No server, no accounts, no installation required.
+![](images/excalidraw_shawshank_redemption.jpg)
 
-**Version:** 1.0.0  
-**Released:** 2026-07-31
+# StaticBoard
 
----
+Excalidraw is one of the best tools for creating diagrams and hand-drawn visuals. But, you can't use it online and paste sensitive data. Even running it offline requires complex installation and not all machine have that kind of priviledge. To solve this I was looking for a solution where there would be minimal setup and just one html file and everything can be run offline. No install no setup. Like:
 
-## Quick Start
+> Just download one file, open it, and start drawing.
 
-1. Download `index.html` from this repository
-2. Double-click it to open in any modern browser
-3. Start drawing
+That is the idea behind StaticBoard. While desinging it I removed all the complexitiies like user accounts, team collaboration, cloud storage, session management, or other enterprise features. Amd  by removing those featurs I was able to embeed all excali into a single htmkl file which can be just downloaded and run and it gives you almost all excali features.
 
-That's it. No installation, no setup, no internet required.
 
----
+## How to run it
 
-## Installation & Deployment
+1. Download `index.html`.
+2. Open it in your browser.
 
-### Option 1: Local file (simplest)
+That is all.
 
-Download `index.html` and open it directly in your browser. Works offline.
+There is no installer, server, login, database, or configuration.
 
-### Option 2: Static web hosting
+## What it can and cannot do
 
-Upload `index.html` to any static hosting service:
+StaticBoard includes the usual drawing tools such as shapes, arrows, text, freehand drawing, images, undo, redo, zoom, and export.
 
-| Service | How |
-|---------|-----|
-| **GitHub Pages** | Fork this repo, enable Pages in Settings |
-| **Netlify** | Drag and drop `index.html` at app.netlify.com/drop |
-| **Vercel** | Import this repo at vercel.com/new |
-| **AWS S3** | Upload to an S3 bucket with static website hosting enabled |
-| **Any web server** | Place `index.html` in the document root |
+It also adds a few features that are useful when working with screenshots:
 
-### Option 3: Embed in another page
+* Paste screenshots directly onto the board
+* Add a soft shadow to pasted images
+* Draw arrows from inside an image to the surrounding canvas
+* Save your work locally in the browser
+* Open and save editable Excalidraw files
+* Export drawings as PNG or SVG
 
-```html
-<iframe src="index.html" width="100%" height="600px" frameborder="0"></iframe>
-```
+StaticBoard intentionally leaves out:
 
-### Option 4: Share via email/USB
+* Accounts and sign-in
+* Real-time collaboration
+* Cloud storage
+* Team administration
+* Backend services
 
-The entire application is a single 2.5 MB file. Send it as an email attachment, put it on a USB drive, or share it via AirDrop/file transfer.
+Those features are useful in larger products, but they would defeat the purpose of keeping StaticBoard simple and portable.
 
----
+## How is everything inside one file?
 
-## Features
+StaticBoard is built with React and uses Excalidraw as its drawing engine.
 
-### Drawing Tools
-- **Shapes**: Rectangle, Diamond, Ellipse, Line, Arrow
-- **Freehand**: Pencil drawing with pressure sensitivity
-- **Text**: Add text annotations anywhere
-- **Images**: Paste or drag images onto the canvas
+Normally, a web application contains separate JavaScript, CSS, font, and asset files. In this release, the application code and styling are bundled inside `index.html`, allowing the browser to run the app directly from that file. The uploaded build contains the application code and its custom image, saving, and export logic within the HTML bundle. 
 
-### Shadow System
-- Automatic shadow applied to imported images
-- Adjustable blur, offset, padding, and strength
-- Presets: None, Subtle, Professional, Dramatic
-- Real-time preview as you adjust
+Images are processed inside the browser, and the current board is saved locally. There is no StaticBoard server receiving your drawings.
 
-### File Operations
-- **New**: Clear canvas and start fresh
-- **Open**: Load `.excalidraw` files
-- **Save**: Export as `.excalidraw` format
-- **Export**: Download as PNG image
 
-### Autosave
-- Automatically saves to browser storage every 3 seconds after changes
-- Persists across browser sessions and page refreshes
-- "Saved" indicator in the top-right corner
+## Credits
 
-### Keyboard Shortcuts
-- `Cmd/Ctrl + S` — Save as .excalidraw file
-- `1` — Selection tool
-- `2` — Rectangle
-- `3` — Diamond
-- `4` — Ellipse
-- `5` — Arrow
-- `6` — Line
-- `7` — Pencil
-- `8` — Text
-- `9` — Image
-- `Cmd/Ctrl + Z` — Undo
-- `Cmd/Ctrl + Shift + Z` — Redo
+StaticBoard uses the open-source Excalidraw editor as its drawing engine.
+
+The aim of this project is not to hide that connection. It is to make the drawing experience easier to distribute and use in places where installing or hosting a full application is inconvenient.
+
+## Project status
+
+StaticBoard is still being improved. Future versions may add more useful features, but the basic idea will remain the same:
+
+> One file. Open it and start drawing.
 
 ---
-
-## User Manual
-
-### Adding Images
-
-1. Click the Image tool (icon 9) in the toolbar, or
-2. Paste an image from clipboard (`Cmd/Ctrl + V`), or
-3. Drag and drop an image file onto the canvas
-
-Images automatically receive a shadow effect that can be customized.
-
-### Customizing Shadows
-
-1. Click on an image to select it
-2. The shadow controls panel appears on the right side
-3. Adjust sliders:
-   - **Blur**: Shadow softness (0-100)
-   - **Offset**: Distance of shadow from image (0-50)
-   - **Padding**: Extra space around the image (0-80)
-   - **Strength**: Shadow darkness (0-100)
-4. Or click a preset button for quick styling
-
-### Saving Your Work
-
-- **Automatic**: Your canvas saves to browser storage automatically
-- **Manual save**: Press `Cmd/Ctrl + S` to download a `.excalidraw` file
-- **Export PNG**: Click `Export` > `Export as PNG` for a shareable image
-
-### Opening Saved Files
-
-1. Click **Open** in the menu bar
-2. Select a `.excalidraw` file from your computer
-3. The canvas loads with all your previous work
-
----
-
-## System Requirements
-
-- Any modern web browser (Chrome, Firefox, Safari, Edge)
-- No internet connection required
-- No backend, server, or database needed
-- Works on macOS, Windows, Linux, ChromeOS, iOS, Android
-
----
-
-## Troubleshooting
-
-| Problem | Solution |
-|---------|----------|
-| Blank page when opening file | Make sure you're using a modern browser (Chrome 90+, Firefox 88+, Safari 14+). Try right-click > "Open with" and select your browser. |
-| Canvas won't save | Check browser storage isn't full. Try clearing other site data if storage is at capacity. |
-| Images won't paste | Some browsers restrict clipboard access on `file://`. Try opening via a local server: `python3 -m http.server 8000` then visit `localhost:8000`. |
-| Shadow controls not showing | Click directly on the image to select it. The panel appears only when an image element is selected. |
-| File too large to email | The app is 2.5 MB which is within most email limits. If blocked, use a file sharing service or zip it first. |
-| Lost my work after clearing browser data | Browser storage is local. Use `Cmd/Ctrl + S` to save a portable `.excalidraw` file as backup. |
-
----
-
-## Release Notes — v1.0.0
-
-First stable release.
-
-- Single-file deployment (one HTML file, no dependencies)
-- Full drawing toolset powered by Excalidraw
-- Image shadow system with presets and custom controls
-- Autosave to browser localStorage
-- File operations: New, Open, Save, Export PNG
-- Keyboard shortcuts for all tools
-- Works offline, no server required
-- Accessible: ARIA labels, keyboard navigation
-
----
-
-## License
-
-MIT
