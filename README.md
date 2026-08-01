@@ -17,6 +17,8 @@ There is nothing to install and no server to start.
 
 ## Features
 
+![](images/Whiteboard_Annotated.jpg)
+
 StaticBoard includes the drawing tools I use most often:
 
 - Shapes, arrows, text, and freehand drawing
